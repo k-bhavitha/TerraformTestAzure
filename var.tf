@@ -9,11 +9,11 @@ variable "region" {
 }
 
 
-variable "subscriptionId" {}
-variable "clientId" {}
-variable "clientSecret" {}
-variable "resourceGroup" {}
-variable "tenantId" {}
+# variable "subscriptionId" {}
+# variable "clientId" {}
+# variable "clientSecret" {}
+# variable "resourceGroup" {}
+# variable "tenantId" {}
 variable "vmSize" {
   description = "Specifies the size of the virtual machine."
   default     = "Standard_D2_v2"
