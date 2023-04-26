@@ -7,24 +7,26 @@ pool:
 
 steps:
 - task: TerraformInstaller@1
+
   inputs:
     terraformVersion: 'latest'
 
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
-  displayName: 'Terraform : INIT'
+- task: TerraformTaskV4@4
   inputs:
-    azureResourceManagerConnection: 'azure-cpg-test'
-    subscriptionId: $(subscriptionId)
-    resourceGroupName: $(resourceGroupName)
+    provider: 'azurerm'
+    command: 'init'
+    backendAzureRmResourceGroupName: 'cpg-dnd'
+    backendAzureRmStorageAccountName: 'cpgdnd8911'
+    backendAzureRmContainerName: 'azure-webjobs-hosts'
+    backendAzureRmKey: 'UD~8Q~jMYSV3n5U_Er~VIaTwSBn4JhSfVAy~XcQs'
 
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
-  displayName: 'Terraform : PLAN'
+- task: TerraformTaskV4@4
   inputs:
-    command: plan
-    environmentServiceNameAzureRM: 'azure-cpg-test'
+    provider: 'azurerm'
+    command: 'plan'
 
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
-  displayName: 'Terraform : VAL & APPLY'
+
+- task: TerraformTaskV4@4
   inputs:
-    command: apply
-    environmentServiceNameAzureRM: 'azure-cpg-test'
+    provider: 'azurerm'
+    command: 'apply'
