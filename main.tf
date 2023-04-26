@@ -1,9 +1,9 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "jonnychipz-infra"
-    storage_account_name = "jonnychipztstate"
-    container_name       = "tstate"
-    key                  = "77Q4LUB5o9wRdbPYDt+0kGZP+L8Sj9E/FNXg7lZBQS5z3mLod5cyan4wA19CR1SmlqIRUFQfhuQrPVaGzNhjGw=="
+    resource_group_name  = "cpg-dnd"
+    storage_account_name = "cpgdnd8911"
+    container_name       = "azure-webjobs-hosts"
+    key                  = "UD~8Q~jMYSV3n5U_Er~VIaTwSBn4JhSfVAy~XcQs"
   }
 
   required_providers {
@@ -24,12 +24,12 @@ provider "azurerm" {
 data "azurerm_client_config" "current" {}
 # Create our Resource Group - Jonnychipz-RG
 resource "azurerm_resource_group" "rg" {
-  name     = "jonnychipz-app01"
-  location = "UK South"
+  name     = "cpg-dnd"
+  location = "US South"
 }
 # Create our Virtual Network - Jonnychipz-VNET
 resource "azurerm_virtual_network" "vnet" {
-  name                = "jonnychipzvnet"
+  name                = "terraformvnet"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -42,19 +42,19 @@ resource "azurerm_subnet" "sn" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 # Create our Azure Storage Account - jonnychipzsa
-resource "azurerm_storage_account" "jonnychipzsa" {
-  name                     = "jonnychipzsa"
+resource "azurerm_storage_account" "cpgdnd8911" {
+  name                     = "cpgdnd8911"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
   tags = {
-    environment = "jonnychipzenv1"
+    environment = "finaldeploy"
   }
 }
 # Create our vNIC for our VM and assign it to our Virtual Machines Subnet
 resource "azurerm_network_interface" "vmnic" {
-  name                = "jonnychipzvm01nic"
+  name                = "terraformvnic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -85,8 +85,8 @@ resource "azurerm_virtual_machine" "jonnychipzvm01" {
   }
   os_profile {
     computer_name  = "jonnychipzvm01"
-    admin_username = "jonnychipz"
-    admin_password = "Password123$"
+    admin_username = "ValarVM"
+    admin_password = "SnowUser@2022!Galaxy$"
   }
   os_profile_windows_config {
   }
