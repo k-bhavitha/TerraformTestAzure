@@ -12,7 +12,10 @@ variable "region" {
 # variable "subscriptionId" {}
 # variable "clientId" {}
 # variable "clientSecret" {}
-# variable "resourceGroup" {}
+ variable "resourceGroup" {
+  description = "resourceGroup name"
+  default     = "cpg-dnd"
+ }
 # variable "tenantId" {}
 variable "vmSize" {
   description = "Specifies the size of the virtual machine."
