@@ -15,6 +15,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
+    backendServiceArm: 'azure-cpg-test'
     backendAzureRmResourceGroupName: 'cpg-dnd'
     backendAzureRmStorageAccountName: 'cpgdnd8911'
     backendAzureRmContainerName: 'azure-webjobs-hosts'
