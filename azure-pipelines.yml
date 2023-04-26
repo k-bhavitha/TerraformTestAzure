@@ -25,7 +25,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    commandOptions: '-input:false'
+    commandOptions: 'input:false'
     environmentServiceNameAzureRM: 'azure-cpg-test'
 
 
@@ -33,5 +33,5 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    commandOptions: '-input:false'
+    commandOptions: 'input:false'
     environmentServiceNameAzureRM : 'azure-cpg-test'
