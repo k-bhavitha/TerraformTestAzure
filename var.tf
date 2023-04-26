@@ -14,7 +14,7 @@ variable "region" {
 # variable "clientSecret" {}
  variable "resourceGroup" {
   description = "resourceGroup name"
-  default     = "cpg-dnd"
+  default     = "cpg-dnd3"
  }
 # variable "tenantId" {}
 variable "vmSize" {
