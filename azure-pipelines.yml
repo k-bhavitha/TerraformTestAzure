@@ -25,11 +25,13 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    environmentServiceNameAzureRM : 'azure-cpg-test'
+    commandOptions: '-input:false'
+    environmentServiceNameAzureRM: 'azure-cpg-test'
 
 
 - task: TerraformTaskV4@4
   inputs:
     provider: 'azurerm'
     command: 'apply'
+    commandOptions: '-input:false'
     environmentServiceNameAzureRM : 'azure-cpg-test'
